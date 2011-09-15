@@ -4,12 +4,12 @@ import time, sqlite3
 import logging
 
 def init_api():
-    consumer_key = "sAw6npnaDu8TbcQi41lg"
-    consumer_secret = "DKulzAxcTt51laJt84nLfvFoZDeFxwsuNTE1dHEk"
-    access_key="372156581-smf1CMigbSwK2zDSNYJjtntjOQylonxteQoHr9ZF"
-    access_secret="Tnnj6x2f7dsG484D1mtIVqnOwSZSM2WJTvHeQppQ"
-    proxy_h = "192.168.222.100"
-    proxy_p = "3128"
+    consumer_key = ""
+    consumer_secret = ""
+    access_key=""
+    access_secret=""
+    proxy_h = ""
+    proxy_p = ""
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_key, access_secret)
     return tweepy.API(auth, proxy_host = proxy_h, proxy_port = proxy_p)

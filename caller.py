@@ -12,7 +12,8 @@ def init_api():
     proxy_p = ""
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_key, access_secret)
-    return tweepy.API(auth, proxy_host = proxy_h, proxy_port = proxy_p)
+    # return tweepy.API(auth, proxy_host = proxy_h, proxy_port = proxy_p)
+    return tweepy.API(auth, secure=True)
 
 def init_db():
     path = "pref.db"

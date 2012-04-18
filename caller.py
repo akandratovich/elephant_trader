@@ -57,15 +57,14 @@ def work(api, conn, facts):
     update_time = 120
     while True:
         try:
-            m = api.search(unicode("слон", "utf-8"))
-            for i in m:
-                if not is_called(conn, i.from_user_id):
-                    try:
-                        save_id(conn, i.from_user_id)
-                        api.update_status(status = format_message(i, facts), in_reply_to_status_id = i.id)
-                        logging.info('send for @' + i.from_user + ': ' + str(i.id))
-                    except tweepy.error.TweepError, e:
-                        logging.info('publish error for @' + i.from_user + ' - ' + str(i.id) + ': ' + str(e))
+            i = api.search(unicode("слон", "utf-8"))[0]
+            if not is_called(conn, i.from_user_id):
+                try:
+                    save_id(conn, i.from_user_id)
+                    api.update_status(status = format_message(i, facts), in_reply_to_status_id = i.id)
+                    logging.info('send for @' + i.from_user + ': ' + str(i.id))
+                except tweepy.error.TweepError, e:
+                    logging.info('publish error for @' + i.from_user + ' - ' + str(i.id) + ': ' + str(e))
         except Exception, e:
             logging.info('cannot get search result: ' + str(e))
         time.sleep(update_time)
